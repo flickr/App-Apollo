@@ -1,0 +1,46 @@
+# THIS IS AN EXAMPLE
+--- 
+allow_full_outage: 0
+extra_service: 
+  backendservice_bills_ping: 
+    frequency: 30
+    healthcheck: /usr/local/bin/backend_ping --service bills
+    retries: 1
+  backendservice_cats_ping: 
+    frequency: 30
+    healthcheck: /usr/local/bin/backend_ping --service cats
+    retries: 1
+  backendservice_cats_puppies: 
+    frequency: 30
+    healthcheck: /usr/local/bin/backend_ping --service puppies
+    retries: 1
+  httpok: 
+    frequency: 60
+    healthcheck: /usr/local/bin/check_http
+    retries: 1
+  load: 
+    frequency: 60
+    healthcheck: /usr/local/bin/check_load
+    retries: 1
+  testone: 
+    frequency: 60
+    healthcheck: /usr/local/bin/testone
+    retries: 1
+  testtwo: 
+    frequency: 60
+    healthcheck: /usr/local/bin/testtwo
+    retries: 3
+heal_cmd: /usr/local/bin/healing/service_healer
+heal_dryrun: 0
+heal_frequency: 60
+heal_on_status: critical
+keep_critical_secs: 90
+keep_warning_secs: 0
+port: 80
+service_cmd: /usr/local/bin/healing/meow
+service_frequency: 60
+service_name: meow
+threshold_down: 30%
+hostname: meow101
+colo: west
+

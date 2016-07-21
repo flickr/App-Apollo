@@ -1,0 +1,14 @@
+.gz$
+.travis.yml
+blib
+^Makefile$
+^Makefile.old$
+^t/tmp/
+docs
+MANIFEST.bak
+MANIFEST.old
+.git
+MYMETA.json
+MYMETA.yml
+apollo.pid
+README

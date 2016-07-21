@@ -1,0 +1,32 @@
+#!/usr/local/bin/perl
+# 
+# apollo-run-healing
+# 
+# Copyright 2016 Yahoo INC.
+# Check the LICENSE file for the COPYRIGHT/LICENSE
+
+use strict;
+use warnings;
+use FindBin;
+use File::Basename;
+use lib "$FindBin::RealBin/../lib/";
+use App::Apollo;
+use Getopt::Long::Descriptive;
+
+my ($opt, $usage) = describe_options(
+    'Runs apollo healing engine',
+    [ 'c|config=s',     'Apollo config file', { default => '/etc/apollo/config.yaml' } ],
+    [ 'p|pid-file=s',   'PID file location', { default => '/var/apollo/run/apollo.pid' } ],
+    [ 'debug',          'Be verbose, VERY verbose' ],
+    [ 'help',           'Print usage message and exists' ],
+    );
+
+print($usage->text), exit if $opt->help;
+
+my $apollo = App::Apollo->new(
+        config_file => $opt->c,
+        pid_file    => $opt->p,
+        debug       => $opt->debug);
+
+$apollo->run;
+
